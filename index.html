@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch.Parjanya Veni - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;600&family=Ubuntu:ital,wght@1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            scroll-behavior: smooth;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: auto;
+            padding: 60px 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .navbar-left {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+        .a-element {
+            padding: 10px 15px;
+            margin-left: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333333;
+            transition: color 0.3s;
+        }
+        .a-element:hover {
+            color: #007BFF;
+        }
+        #menu-toggle {
+            display: none;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background: #333;
+            margin-bottom: 4px;
+            border-radius: 2px;
+        }
+        @media (max-width: 768px) {
+            .navbar-right {
+                position: fixed;
+                top: 70px;
+                right: 0;
+                background: #ffffff;
+                flex-direction: column;
+                width: 200px;
+                height: calc(100% - 70px);
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+                padding-top: 20px;
+            }
+            .navbar-right .a-element {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .hamburger {
+                display: flex;
+            }
+            #menu-toggle:checked + .hamburger + .navbar-right {
+                transform: translateX(0);
+            }
+        }
+        
+        .Portfolio-title {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 30px;
+          font-weight: bold;
+          font-style: italic;
+          text-align: center;
+          margin-top: 180px; 
+          line-height: 40px;
+          color: #333;
+}
+
+        .Welcomes {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 25px;
+          text-align: center;
+          margin-top: 20px;
+          font-weight: bold;
+          color: blue;
+          margin-bottom: 80px;
+        }
+
+        .about {
+            padding: 100px 0;
+            background-color: #ffffff;
+            font-style: italic;
+        }
+        .about h2 {
+            font-family: 'Ubuntu', sans-serif;
+            color: #007BFF;
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .about p {
+            max-width: 600px; 
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.6;
+            color:#061301;
+            font-family: Arial;
+        }
+        .about-container{
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 10px;
+        }
+        .skills {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+            text-align: center;
+
+        }
+        .skills h2 {
+            font-family: 'Ubuntu', sans-serif;
+            color: #007BFF;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        .skills-sub-cont {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            text-align: center; 
+        }
+        .skill-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .skill-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #007BFF;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .skill-card p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            color: #555555;
+            text-align: center;
+            font-family: Arial;
+        }
+        .projects {
+            padding: 60px 0;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .projects h2 {
+            font-family: 'Ubuntu', sans-serif;
+            color: #007BFF;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        .projects-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap; 
+        }
+        .project-card {
+            max-width: 300px; 
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .project-card h3 {
+          font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        .project-card p {
+            color: #555555;
+            margin-bottom: 20px;
+            font-family: Arial;
+        }
+        .project-card img {
+            width: 100%; 
+            height: auto; 
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .project-details {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .project-details h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        .project-details p {
+            margin-bottom: 20px;
+            color: #555555;
+            font-family: Arial;
+        }
+        .contact {
+            padding: 100px 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .contact h1 {
+            font-family: 'Ubuntu', sans-serif;
+            color: #007BFF;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        .contact-info {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+            font-family: Arial;
+        }
+        .contact-info a {
+            display: inline-block;
+            background: #007BFF;
+            color: #fff;
+            padding: 20px 25px;
+            border-radius: 25px;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+        .contact-info a:hover {
+            background: #0056b3;
+        }
+        .contact-form button.submit-btn {
+            background: #007BFF;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .contact-form button.submit-btn:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+        }
+        footer {
+            background: #333333;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .social-links a {
+            color: #ffffff;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#home">Ch.Parjanya Veni</a>
+        </div>
+        <div class="navbar-right">
+            <input type="checkbox" id="menu-toggle" />
+            <label for="menu-toggle" class="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <a class="a-element" href="#about">About</a>
+            <a class="a-element" href="#skills">Skills</a>
+            <a class="a-element" href="#projects">Projects</a>
+            <a class="a-element" href="#contact">Contact</a>
+        </div>
+    </div>
+<section class="introduction">
+        <p class="Portfolio-title">Hello, I'm Parjanya Veni</p>
+        <p class="Welcomes">Welcome to my Portfolio</p>
+</section>
+<section id="about" class="about">
+    <div class="about-container" >
+      <div> <h2>About Me</h2> </div>
+      <br>
+      <p>
+          Hello! I am Ch. Parjanya Veni,from Andhra Pradesh.
+          I am currently a 2nd year BTech student in the CSE department at IIT Indore.
+          I am passionate about software development, Algorithms, artificial intelligence and machine learning. 
+        </p>
+        <img src="institute-logo.png" ; style= "width: 150px; height: 150px; object-fit: cover; margin-right: 25px;">
+    
+    </div>
+</section>
+
+  <div class="skills" id="skills">
+      <h2>Skills</h2>
+      <div class="skills-sub-cont">
+          <div class="skill-card">
+              <h3>Web Development</h3>
+              <p>HTML, CSS</p>
+          </div>
+          <div class="skill-card">
+              <h3>Programming Languages</h3>
+              <p>Python, C++</p>
+          </div>
+          <div class="skill-card">
+              <h3>Database Management</h3>
+              <p>SQL</p>
+          </div>
+          <div class="skill-card">
+              <h3>Data Structures and Algorithms</h3>
+              <p>Sorting, Arrays,Lists,Stacks</p>
+          </div>
+      </div>
+  </div>
+
+  <div class="projects" id="projects">
+      <h2>Projects</h2>
+      <div class="projects-container">
+      <div class="project-details">
+          <h3>Project 1: Dynamic Website</h3>
+          <p>A fully responsive website with interactive features, connected to a  database for real-time data storage and retrieval.</p>
+      </div>
+       <div class="project-details">
+          <h3> Project 2: Music management system</h3>
+          <p> A database system created to manage all the data files of songs and artists which is convinent for the user to listen to the songs.</p>
+       </div>
+      </div>
+    </div>
+
+  <div class="contact" id="contact">
+      <h1>Contact Me</h1>
+      <div class="contact-info">
+          <p>You can reach me via email:</p>
+      </div>
+      <div class="contact-form-container">
+        <form class="contact-form" action="mailto:your.email@example.com" method="post" enctype="text/plain">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Contact Me</button>
+        </form>
+    </div>
+  </div>
+
+  <footer>
+      <p>&copy; 2024 Ch.Parjanya Veni. All rights reserved.</p>
+  </footer>
+
+
+</body>
+</html>
